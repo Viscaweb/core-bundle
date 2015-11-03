@@ -1,0 +1,15 @@
+{% block bootstrap_date_picker_type_widget -%}
+<div class="btn-group pull-right btn-group-date-selector">
+    <input type="hidden" data-locale="{{ locale }}" class="input-datepicker"{% if value is defined %} value="{{ value }}"{% endif %}{{ block('widget_attributes') }}>
+    <button type="button" class="btn btn-default btn-datepicker-day-before">
+        <span class="icon-caret-left"></span>
+    </button>
+    <button type="button" class="btn btn-default btn-datepicker-open">
+        <span class="text-selected-date">{{ value | localdate('E dd MMM') | capitalize }}</span>
+        <span class="icon-caret-down"></span>
+    </button>
+    <button type="button" class="btn btn-default btn-datepicker-day-after">
+        <span class="icon-caret-right"></span>
+    </button>
+</div>
+{% endblock bootstrap_date_picker_type_widget -%}

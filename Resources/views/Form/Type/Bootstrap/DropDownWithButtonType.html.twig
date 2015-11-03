@@ -1,0 +1,21 @@
+{% block bootstrap_drop_down_with_button_widget -%}
+    {% set selectedChoiceLabel = 'XXX' %}
+    {% for choice in choices %}
+        {% if choice is selectedchoice(value) %}
+            {% set selectedChoiceLabel = choice.label %}
+        {% endif %}
+    {% endfor %}
+    <div class="btn-group {{ btn_group_classes|join(' ') }}">
+        <input type="hidden" {{ block('widget_attributes') }} value="{{ (value is defined ? value) }}" />
+        <div class="btn-group">
+            <button type="button" data-toggle="dropdown" class="btn btn-xs spinner dropdown-toggle" type="button" aria-expanded="false">
+                <span class="icon icon-expand"></span>{{ selectedChoiceLabel }}
+            </button>
+            <ul role="menu" class="dropdown-menu dropdown-select">
+                {% for choice in choices %}
+                    <li class="{{ (choice is selectedchoice(value) ? 'selected') }}"><a href="#" data-value="{{ choice.value }}" onclick="$('#{{ id }}').val($(this).data('value')).trigger('change');">{{ choice.label }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{%- endblock bootstrap_drop_down_with_button_widget %}

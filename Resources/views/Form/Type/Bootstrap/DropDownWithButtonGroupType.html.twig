@@ -1,0 +1,36 @@
+{% block bootstrap_drop_down_with_button_group_widget -%}
+    {#{% set selectedChoiceLabel = 'XXX' %}#}
+    {#{% if show_left_right_arrows %}#}
+        {#{% set selectedChoiceLabel = 'YES' %}#}
+    {#{% endif %}#}
+
+    {% for choice in choices %}
+        {% if choice is selectedchoice(value) %}
+            {% set selected_choice_label = choice.label %}
+        {% endif %}
+    {% endfor %}
+    <div class="btn-group btn-group-justified btn-group-selector-prev-next">
+        <input type="hidden" {{ block('widget_attributes') }} value="{{ (value is defined ? value) }}" />
+        {% if show_left_right_arrows %}
+            <a href="#" class="btn btn-default btn-prev">
+                <span class="icon-caret-left"></span>
+            </a>
+        {% endif %}
+        <div class="btn-group">
+            <a data-toggle="dropdown" class="btn btn-default dropdown-toggle{{ (disabled ? ' disabled') }}" type="button">
+                <span class="icon icon-caret-select"></span>{{ selected_choice_label }}
+            </a>
+            <ul role="menu" class="dropdown-menu dropdown-select">
+                {% for choice in choices %}
+                    <li class="{{ (choice is selectedchoice(value) ? 'selected') }}"><a href="#" data-value="{{ choice.value }}" onclick="$('#{{ id }}').val($(this).data('value')).trigger('change');">{{ choice.label }}</a></li>
+                    {#<li class="{% if choice is selectedchoice(value) %}selected{% endif %}"><a href="#" data-value="{{ choice.value }}">{{ choice.label }}</a></li>#}
+                {% endfor %}
+            </ul>
+        </div>
+        {% if show_left_right_arrows %}
+            <a href="#" class="btn btn-default btn-next">
+                <span class="icon-caret-right"></span>
+            </a>
+        {% endif %}
+    </div>
+{%- endblock bootstrap_drop_down_with_button_group_widget %}

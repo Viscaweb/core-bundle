@@ -1,0 +1,43 @@
+{% block bootstrap_button_group_type_widget -%}
+    {% set toolbarWrapper = toolbarWrapper is defined ? toolbarWrapper : true %}
+    {% if toolbarWrapper %}
+    <div class="btn-toolbar{{ wrapperClass is not empty ? ' ' ~ wrapperClass }}" role="toolbar">
+    {% endif %}
+        <input type="hidden"{% if value is defined %} value="{{ value }}"{% endif %} {{ block('widget_attributes') }} />
+        <div class="btn-group{{ toolbarWrapper == false ? ' '~wrapperClass }}">
+            {% set options = choices -%}
+            {{- block('bootstrap_button_group_type_widget_button') -}}
+        </div>
+    {% if toolbarWrapper %}
+    </div>
+    {% endif %}
+{%- endblock bootstrap_button_group_type_widget %}
+
+{% block bootstrap_button_group_type_widget_button -%}{% spaceless %}
+    {% for group_label, choice in options %}
+        {% set btn_class = 'btn btn-default' %}
+        {% if choice is selectedchoice(value) %}
+            {% set btn_class = btn_class ~ ' active' %}
+        {% endif %}
+        {% if toolbarWrapper %}
+            <button
+                    type="button"
+                    class="{{ btn_class }}"
+                    data-form-value="{{ choice.value }}"
+                    onclick="$('#{{ id }}').val($(this).attr('data-form-value')).trigger('change');"
+            >
+                {{ choice.label|trans({}, translation_domain)|raw }}
+            </button>
+        {% else %}
+            <a
+                    href="#"
+                    class="{{ btn_class }}"
+                    data-form-value="{{ choice.value }}"
+                    onclick="$('#{{ id }}').val($(this).attr('data-form-value')).trigger('change');"
+                >
+            {{ choice.label|trans({}, translation_domain)|raw }}
+            </a>
+        {% endif %}
+    {% endfor %}
+{% endspaceless %}
+{%- endblock bootstrap_button_group_type_widget_button %}

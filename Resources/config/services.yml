@@ -1,0 +1,38 @@
+services:
+    # Form types
+    visca_core.form.type.bootstrap_button_group:
+        class: Visca\Bundle\CoreBundle\Form\Type\BootstrapButtonGroupType
+        tags:
+            - { name: form.type, alias: bootstrap_button_group }
+
+    visca_core.form.type.bootstrap_date_picker:
+        class: Visca\Bundle\CoreBundle\Form\Type\BootstrapDatePickerType
+        tags:
+            - { name: form.type, alias: bootstrap_date_picker }
+
+    visca_core.form.type.bootstrap.pagination.pagination:
+        class: Visca\Bundle\CoreBundle\Form\Type\Bootstrap\PaginationType
+        tags:
+            - { name: form.type, alias: visca_core_bootstrap_pagination }
+
+    visca_core.form.type.bootstrap.drop_down_with_button_group:
+        class: Visca\Bundle\CoreBundle\Form\Type\Bootstrap\DropDownWithButtonGroupType
+        tags:
+            - { name: form.type, alias: bootstrap_drop_down_with_button_group }
+
+    visca_core.form.type.bootstrap.drop_down_with_button:
+        class: Visca\Bundle\CoreBundle\Form\Type\Bootstrap\DropDownWithButtonType
+        tags:
+            - { name: form.type, alias: bootstrap_drop_down_with_button }
+
+    # Events
+    visca_core.event.doctrine_proxy_subscriber:
+        class: Visca\Bundle\CoreBundle\Event\DoctrineProxySubscriber
+        tags:
+            - { name: jms_serializer.event_subscriber }
+
+    # Tests
+    visca_core.test.fixtures.loader:
+        class: Visca\Bundle\CoreBundle\Test\Fixtures\FixturesLoader
+        arguments:
+            - @doctrine

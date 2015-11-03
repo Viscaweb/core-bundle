@@ -1,0 +1,10 @@
+twig:
+    form:
+        resource:
+            - 'ViscaCoreBundle:Form/Type:BootstrapButtonGroupType.html.twig'
+            - 'ViscaCoreBundle:Form/Type:BootstrapDatePickerType.html.twig'
+
+            - 'ViscaCoreBundle:Form/Type/Bootstrap:PaginationType.html.twig'
+
+            - 'ViscaCoreBundle:Form/Type/Bootstrap:DropDownWithButtonType.html.twig'
+            - 'ViscaCoreBundle:Form/Type/Bootstrap:DropDownWithButtonGroupType.html.twig'
