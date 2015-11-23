@@ -24,7 +24,7 @@
                     type="button"
                     class="{{ btn_class }}"
                     data-form-value="{{ choice.value }}"
-                    onclick="$('#{{ id }}').val($(this).attr('data-form-value')).trigger('change');"
+                    onclick="event.preventDefault();$('#{{ id }}').val($(this).attr('data-form-value')).trigger('change');"
             >
                 {{ choice.label|trans({}, translation_domain)|raw }}
             </button>
@@ -33,7 +33,7 @@
                     href="#"
                     class="{{ btn_class }}"
                     data-form-value="{{ choice.value }}"
-                    onclick="$('#{{ id }}').val($(this).attr('data-form-value')).trigger('change');"
+                    onclick="event.preventDefault();$('#{{ id }}').val($(this).attr('data-form-value')).trigger('change');"
                 >
             {{ choice.label|trans({}, translation_domain)|raw }}
             </a>
