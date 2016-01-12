@@ -35,4 +35,4 @@ services:
     visca_core.test.fixtures.loader:
         class: Visca\Bundle\CoreBundle\Test\Fixtures\FixturesLoader
         arguments:
-            - @doctrine
+            - '@doctrine'
