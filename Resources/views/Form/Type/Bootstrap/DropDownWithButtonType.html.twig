@@ -13,7 +13,9 @@
             </button>
             <ul role="menu" class="dropdown-menu dropdown-select">
                 {% for choice in choices %}
-                    <li class="{{ (choice is selectedchoice(value) ? 'selected') }}"><a href="#" data-value="{{ choice.value }}" onclick="$('#{{ id }}').val($(this).data('value')).trigger('change');">{{ choice.label }}</a></li>
+                    <li class="{{ (choice is selectedchoice(value) ? 'selected') }}">
+                        <a href="#" data-value="{{ choice.value }}" onclick="event.preventDefault();$('#{{ id }}').val($(this).data('value')).trigger('change');">{{ choice.label }}</a>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
