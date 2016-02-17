@@ -12,12 +12,12 @@
     <div class="btn-group btn-group-justified btn-group-selector-prev-next">
         <input type="hidden" {{ block('widget_attributes') }} value="{{ (value is defined ? value) }}" />
         {% if show_left_right_arrows %}
-            <a href="#" class="btn btn-default btn-prev">
+            <a href="#" class="btn btn-default btn-prev {{ button_class is not empty ? button_class : '' }}">
                 <span class="icon-caret-left"></span>
             </a>
         {% endif %}
         <div class="btn-group">
-            <a data-toggle="dropdown" class="btn btn-default dropdown-toggle{{ (disabled ? ' disabled') }}" type="button">
+            <a data-toggle="dropdown" class="btn btn-default dropdown-toggle{{ (disabled ? ' disabled') }} {{ button_class is not empty ? button_class : '' }}" type="button">
                 <span class="icon icon-caret-select"></span>{{ selected_choice_label }}
             </a>
             <ul role="menu" class="dropdown-menu dropdown-select">
@@ -29,7 +29,7 @@
             </ul>
         </div>
         {% if show_left_right_arrows %}
-            <a href="#" class="btn btn-default btn-next">
+            <a href="#" class="btn btn-default btn-next {{ button_class is not empty ? button_class : '' }}">
                 <span class="icon-caret-right"></span>
             </a>
         {% endif %}
