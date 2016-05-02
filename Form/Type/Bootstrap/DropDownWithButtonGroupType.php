@@ -21,8 +21,9 @@ class DropDownWithButtonGroupType extends AbstractType
         $resolver->setDefaults([
             'selected_choice_label' => '-',
             'disabled' => false,                // Is the element disabled?
-            'show_left_right_arrows' => true,    // Display left/right arrows? < [ box ] >
-            'button_class' => '',    // Display left/right arrows? < [ box ] >
+            'show_left_right_arrows' => true,   // Display left/right arrows? < [ box ] >
+            'button_class' => '',               // Display left/right arrows? < [ box ] >
+            'uiDisabled' => false
         ]);
     }
 
@@ -34,7 +35,7 @@ class DropDownWithButtonGroupType extends AbstractType
         $builder
             ->setAttribute('selected_choice_label', $options['selected_choice_label'])
             ->setAttribute('show_left_right_arrows', $options['show_left_right_arrows'])
-            ->setAttribute('disabled', $options['disabled'])
+//            ->setAttribute('disabled', $options['disabled'])
             ->setAttribute('button_class', $options['button_class']);
     }
 
@@ -45,7 +46,8 @@ class DropDownWithButtonGroupType extends AbstractType
     {
         $view->vars['selected_choice_label'] = $options['selected_choice_label'];
         $view->vars['show_left_right_arrows'] = $options['show_left_right_arrows'];
-        $view->vars['disabled'] = $options['disabled'];
+//        $view->vars['disabled'] = $options['disabled'];
+        $view->vars['uiDisabled'] = $options['uiDisabled'];
         $view->vars['button_class'] = $options['button_class'];
     }
 

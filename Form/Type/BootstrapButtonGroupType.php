@@ -20,7 +20,7 @@ class BootstrapButtonGroupType extends AbstractType
     {
         $resolver->setDefaults([
             'toolbarWrapper' => true,
-            'wrapperClass' => null,
+            'wrapperClass' => null
         ]);
     }
 

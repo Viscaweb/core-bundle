@@ -17,7 +17,7 @@
             </a>
         {% endif %}
         <div class="btn-group">
-            <a data-toggle="dropdown" class="btn btn-default dropdown-toggle{{ (disabled ? ' disabled') }} {{ button_class is not empty ? button_class : '' }}" type="button">
+            <a data-toggle="dropdown" class="btn btn-default dropdown-toggle{{ (uiDisabled ? ' disabled') }} {{ button_class is not empty ? button_class : '' }}" type="button">
                 <span class="icon icon-caret-select"></span>{{ selected_choice_label }}
             </a>
             <ul role="menu" class="dropdown-menu dropdown-select">
