@@ -76,6 +76,10 @@
         // Trigger the event used by the widget refresh
         dpInput.trigger('change');
 
+        this.updateCaption();
+    };
+
+    DatePickerSelector.prototype.updateCaption = function () {
         // Get the current datepicker's format
         var defaultDateFormat = this.getDatePicker().datepicker('option', 'dateFormat');
 
@@ -121,13 +125,22 @@
 
 
     $.fn.datePickerDaySelector = function (options) {
-        return this.each( function () {
+        var toReturn = this;
+        var toReturnDefault = this.each( function () {
             var $this = $(this);
             var data = $this.data('app.datepicker.selector');
 
             if (!data) {
                 $this.data('app.datepicker.selector', (data = new DatePickerSelector(this, options)));
             }
+
+            if (typeof options === 'string') {
+                toReturn = data[options]();
+                return false;
+            }
         });
+
+
+        return (toReturn !== toReturnDefault) ? toReturn : toReturnDefault;
     };
 }));
