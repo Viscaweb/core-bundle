@@ -7,6 +7,13 @@
     {% if pageCount > 1 %}
         <div class="bootstrap-pagination-widget">
             <input type="hidden" {{ block('widget_attributes') }} value="{{ value }}"/>
+            {% if predictionType is defined %}
+                <input type="hidden" name="predictionType" value="{{ predictionType }}"/>
+            {% endif %}
+            {% if competitionId is defined%}
+                <input type="hidden" name="competitionId" value="{{ competitionId }}"/>
+            {% endif %}
+
             <div class="table-pagination">
                 {% if displayAllButton is defined and displayAllButton == true %}
                     <a href="#">
