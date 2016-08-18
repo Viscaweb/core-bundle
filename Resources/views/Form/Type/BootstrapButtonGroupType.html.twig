@@ -26,7 +26,11 @@
                     data-form-value="{{ choice.value }}"
                     onclick="event.preventDefault();$('#{{ id }}').val($(this).attr('data-form-value')).trigger('change');"
             >
-                {{ choice.label|trans({}, translation_domain)|raw }}
+                {% if avoidLabelTranslation is defined and avoidLabelTranslation %}
+                    {{ choice.label }}
+                {% else %}
+                    {{ choice.label|trans({}, translation_domain)|raw }}
+                {% endif %}
             </button>
         {% else %}
             <a
@@ -34,8 +38,12 @@
                     class="{{ btn_class }}"
                     data-form-value="{{ choice.value }}"
                     onclick="event.preventDefault();$('#{{ id }}').val($(this).attr('data-form-value')).trigger('change');"
-                >
-            {{ choice.label|trans({}, translation_domain)|raw }}
+            >
+            {% if avoidLabelTranslation is defined and avoidLabelTranslation %}
+                {{ choice.label }}
+            {% else %}
+                {{ choice.label|trans({}, translation_domain)|raw }}
+            {% endif %}
             </a>
         {% endif %}
     {% endfor %}
