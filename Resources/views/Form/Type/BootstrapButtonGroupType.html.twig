@@ -26,8 +26,8 @@
                     data-form-value="{{ choice.value }}"
                     onclick="event.preventDefault();$('#{{ id }}').val($(this).attr('data-form-value')).trigger('change');"
             >
-                {% if avoidLabelTranslation is defined and avoidLabelTranslation | raw %}
-                    {{ choice.label }}
+                {% if avoidLabelTranslation is defined and avoidLabelTranslation %}
+                    {{ choice.label | raw }}
                 {% else %}
                     {{ choice.label|trans({}, translation_domain)|raw }}
                 {% endif %}
