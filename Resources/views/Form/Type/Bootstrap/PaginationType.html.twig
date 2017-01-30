@@ -16,7 +16,7 @@
 
             <div class="table-pagination">
                 {% if displayAllButton is defined and displayAllButton == true %}
-                    <a href="#">
+                    <a href="{{ path('visca_prediction_mine') }}">
                         <span class="icon-caret-right icon"></span>
                         {{ 'prediction.my-predictions.link.all-my-predictions' | trans() }}
                     </a>
