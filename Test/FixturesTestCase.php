@@ -9,10 +9,7 @@ use Nelmio\Alice\Fixtures;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Visca\Bundle\DoctrineBundle\Util\EntityManagerPurger;
 
-/**
- * Class FixturesTestCase.
- */
-abstract class FixturesTestCase extends BaseWebTestCase
+abstract class FixturesTestCase extends \Tests\WebTestCase
 {
     /**
      * Array of objects loaded in the fixtures

@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Visca\Bundle\DoctrineBundle\Util\EntityManagerPurger;
 
 /**
- * Class WebTestCase.
+ * @deprecated
  */
 abstract class WebTestCase extends BaseWebTestCase
 {
